@@ -22,8 +22,11 @@ const LoginPage = () => {
       const res = await loginUser({ email, password });
 
       const token = res.data.token;
+      const userEmail = res.data.email;
+      console.log(res.data)
       if (token) {
         sessionStorage.setItem('token', token);
+        sessionStorage.setItem('email', userEmail);
         console.log('Login successful, navigating...');
         setTimeout(() => {
           navigate('/dashboard');
@@ -91,9 +94,8 @@ const LoginPage = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className={`${
-              isLoading ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
-            } text-white py-2 rounded-md transition flex items-center justify-center gap-2`}
+            className={`${isLoading ? 'bg-blue-400' : 'bg-blue-600 hover:bg-blue-700'
+              } text-white py-2 rounded-md transition flex items-center justify-center gap-2`}
           >
             {isLoading && (
               <span className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></span>
