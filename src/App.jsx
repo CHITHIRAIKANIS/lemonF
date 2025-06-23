@@ -14,7 +14,7 @@ const App = () => {
   }, [])
 
   const ProtectedRoute = ({ children }) => {
-    // const authenticated = true;
+    const authenticated = true; //test
     return authenticated ? children : <Navigate to="/login" />
   }
 
